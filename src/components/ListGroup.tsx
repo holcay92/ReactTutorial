@@ -1,5 +1,5 @@
 function ListGroup() {
-  const items = [
+  let items = [
     "New York",
     "Los Angeles",
     "Chicago",
@@ -101,8 +101,18 @@ function ListGroup() {
     "Boise",
     "San Bernardino",
   ];
+  //items = [];
+
+  const getEmptyMessage = () => {
+    return items.length === 0 ? <p>There are no items in the list.</p> : null;
+  };
+
   return (
     <ul className="list-group">
+      <h1>List</h1>
+      {/*getEmptyMessage()*/}
+      {/* it is the same as above with short circuit operator */}
+      {items.length === 0 && <p>There are no items in the list.</p>}
       {items.map((item, index) => (
         <li className="list-group-item" key={index}>
           {item}
