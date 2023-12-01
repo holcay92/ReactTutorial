@@ -1,3 +1,4 @@
+import React, { MouseEvent, useState } from "react";
 function ListGroup() {
   let items = [
     "New York",
@@ -102,10 +103,12 @@ function ListGroup() {
     "San Bernardino",
   ];
   //items = [];
+  const handleClick = (event: MouseEvent) => console.log(event);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
-  const getEmptyMessage = () => {
+  /*   const getEmptyMessage = () => {
     return items.length === 0 ? <p>There are no items in the list.</p> : null;
-  };
+  }; */
 
   return (
     <ul className="list-group">
@@ -114,7 +117,18 @@ function ListGroup() {
       {/* it is the same as above with short circuit operator */}
       {items.length === 0 && <p>There are no items in the list.</p>}
       {items.map((item, index) => (
-        <li className="list-group-item" key={index}>
+        <li
+          className={
+            selectedIndex === index
+              ? "list-group-item active"
+              : "list-group-item"
+          }
+          key={index}
+          onClick={() => {
+            setSelectedIndex(index);
+            handleClick;
+          }}
+        >
           {item}
         </li>
       ))}
