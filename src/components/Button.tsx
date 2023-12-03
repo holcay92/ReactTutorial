@@ -1,6 +1,6 @@
 interface ButtonProps {
   text: string;
-  color?: string;
+  color?: "primary" | "secondary" | "success" | "danger" | "warning";
   onClick: () => void;
 }
 
